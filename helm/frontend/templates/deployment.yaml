@@ -9,6 +9,9 @@ spec:
       app: frontend
   template:
     metadata:
+      annotations:
+        checksum/html: {{ include (print $.Template.BasePath "/configmap-html.yaml") . | sha256sum }}
+        checksum/nginx: {{ include (print $.Template.BasePath "/configmap-nginx.yaml") . | sha256sum }}
       labels:
         app: frontend
     spec:

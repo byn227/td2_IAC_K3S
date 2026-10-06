@@ -9,6 +9,8 @@ spec:
       app: backend
   template:
     metadata:
+      annotations:
+        checksum/code: {{ include (print $.Template.BasePath "/configmap-code.yaml") . | sha256sum }}
       labels:
         app: backend
     spec:
